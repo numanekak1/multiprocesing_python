@@ -2,7 +2,7 @@ import multiprocessing
 import requests
 
 def downloadFile(url,name):
-  print(F'Start Downloading")
+  print(F"Start Downloading")
   response=requests.get(url)
 
   open(F"image_{name}.jpg","wb").write(response.content)
@@ -12,9 +12,9 @@ def downloadFile(url,name):
   url="https://picsum.photos/2000/3000"
   pros=[]
   for i in range(100):
-    p=multiprocessing.Process(target=downloadFile,args=[urls,i])
+    p=multiprocessing.Process(target=downloadFile,args=[url,i])
     p.start()
-    pros.append(d)
+    pros.append(p)
 
-for p in pros:
-  p.join()
+  for p in pros:
+    p.join()
